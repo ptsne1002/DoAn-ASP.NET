@@ -1,0 +1,58 @@
+﻿
+.container-table {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: block;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 33px 30px;
+}
+
+.wrap-table {
+    width: 100%;
+    margin-left:auto; 
+    margin-right:auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.table {
+    font-size: 16px;
+    font-family: SANS-SERIF;
+    border-radius: 10px;
+    
+}
+
+.table_header {
+    color: white;
+    background: #6c7ae0;
+    border-radius: 15px;
+}
+
+.table_header :hover{
+    background-color: #9ed1eac4;
+    cursor: pointer;
+}
+
+.row_tbl{
+    background-color: #85cecad4;
+    
+}
+
+.td-action {
+    max-width : 80px;
+}
+
+.btn {
+    
+    margin-left : 10px;
+    margin-top : 2px;
+    margin-bottom : 2px;
+}
