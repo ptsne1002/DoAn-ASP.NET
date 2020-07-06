@@ -45,11 +45,11 @@ namespace DoAn_CK.Models
             return dsct;
         }
 
-        public int DeleteCaTruc(string manv)
+        public int DeleteCaTruc(CaTruc ct)
         {
             MySqlConnection con = GetConnection();
             con.Open();
-            string sql = "delete from catruc where manv ='" + manv + "'";
+            string sql = "delete from catruc where manv ='" + ct.MaNV + "'";
             MySqlCommand cmd = new MySqlCommand(sql,con);
             return(cmd.ExecuteNonQuery());
         }

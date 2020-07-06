@@ -27,11 +27,11 @@ namespace DoAn_CK.Controllers
             return View(ls);
         }
 
-        public int DeleteCaTruc(string MaNV)
+        public int DeleteCaTruc(CaTruc ct)
         {
             GetConnect();
             
-            return (cotext.DeleteCaTruc(MaNV));
+            return (cotext.DeleteCaTruc(ct));
         }
     }
 }

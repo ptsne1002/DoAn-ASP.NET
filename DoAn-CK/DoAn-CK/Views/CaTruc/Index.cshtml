@@ -14,39 +14,65 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<div  class="container-table">
-<div class="wrap-table">
-    <table class="table table-bordered" id="table-CaTruc">
-        <tr class="table_header">
-            <th>Mã Nhân Viên</th>
-            <th>Tên Nhân Viên</th>
-            <th>Tên Công Việc</th>
-            <th>Nhiệm Vụ</th>
-            <th>Khu Vực</th>
-            <th>Ca Làm</th>
-            <td></td>
-        </tr>
-        @foreach (var x in Model)
-        {
-            <tr class="row_tbl">
-                <td>@x.MaNV</td>
-                <td>@x.TenNV</td>
-                <td>@x.TenCV</td>
-                <td>@x.NhiemVu</td>
-                <td>@x.KhuVuc</td>
-                <td>@x.CaLam</td>
-                <td class="td-action">
-                    <button class="btn btn-danger delete-row" title="Xoá" id="@x.MaNV"><i class="glyphicon glyphicon-trash"></i></button>
-                    <button class="btn btn-info" title="Sửa"><i class="far fa-edit"> </i></button>
-                </td>
+@{
+    var i = 0;
+}
+<div class="container-table">
+    <div class="wrap-table">
+        <table class="table table-bordered" id="table-CaTruc">
+            <tr class="table_header">
+                <th>Mã Nhân Viên</th>
+                <th>Tên Nhân Viên</th>
+                <th>Tên Công Việc</th>
+                <th>Nhiệm Vụ</th>
+                <th>Khu Vực</th>
+                <th>Ca Làm</th>
+                <td></td>
             </tr>
-        }
-    </table>
+            @foreach (var x in Model)
+            {
+                i++;
+                <tr class="row_tbl">
+                    <td>@x.MaNV</td>
+                    <td>@x.TenNV</td>
+                    <td>@x.TenCV</td>
+                    <td>@x.NhiemVu</td>
+                    <td>@x.KhuVuc</td>
+                    <td>@x.CaLam</td>
+                    <td class="td-action">
+                        <button class="btn btn-danger delete-row" title="Xoá" id="@i"><i class="glyphicon glyphicon-trash"></i></button>
+                        <button class="btn btn-info" title="Sửa" id="btnsua" ><i class="far fa-edit"> </i></button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div>
+        <button class="btn btn-success" id="btnExport" title="Xuất File Excel"><i class="glyphicon glyphicon-save"></i> Export To Excel</button>
+    </div>
 </div>
-<div>
-    <button class="btn btn-success" id="btnExport" title="Xuất File Excel"><i class="glyphicon glyphicon-save"></i> Export To Excel</button>
+
+// Modal Plugin
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>This is a large modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
+
+
+
+
 <script>
     $("#btnExport").click(
         function () {
@@ -128,18 +154,33 @@
         var varid = this.id;
         var d;
         console.log(varid);
-        if (confirm("Are you sure to delete this contact?")) {
-            console.log(id);
+        if (confirm("Bạn Có Chắc Thực hiện xoá Ca Trực này?")) {
+
+            var myTab = document.getElementById('table-CaTruc');
+            var manv = myTab.rows.item(varid).cells.item(0).innerHTML;
+            var tennv = myTab.rows.item(varid).cells.item(1).innerHTML;
+            var tencv = myTab.rows.item(varid).cells.item(2).innerHTML;
+            var nhiemvu = myTab.rows.item(varid).cells.item(3).innerHTML;
+            var kv = myTab.rows.item(varid).cells.item(4).innerHTML;
+            var calam = myTab.rows.item(varid).cells.item(5).innerHTML;
+            console.log(manv, tennv, tencv, nhiemvu, kv, calam);
             $.post('@Url.Action("DeleteCaTruc", "CaTruc")',
                 {
-                    MaNV: varid
+                    MaNV: manv,
+                    TenNV: tennv,
+                    TenCV: tencv,
+                    NhiemVu: nhiemvu,
+                    KhuVuc: kv,
+                    CaLam: calam,
+
                 }, result => {
                     if (Number(result) > 0) {
-                        alert("success!");
+                        alert("Thành Công!");
                         location.reload();
                     }
                     else {
-                        alert("Fail!");
+                        alert("Thực Thi thất bại!");
+                        location.reload();
                     }
                 })
         };
