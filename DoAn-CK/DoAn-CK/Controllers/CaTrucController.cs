@@ -33,5 +33,10 @@ namespace DoAn_CK.Controllers
             
             return (cotext.DeleteCaTruc(ct));
         }
+        
+        public IActionResult FormEditCaTruc()
+        {
+            return View();
+        }
     }
 }

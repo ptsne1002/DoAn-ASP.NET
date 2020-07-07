@@ -53,5 +53,7 @@ namespace DoAn_CK.Models
             MySqlCommand cmd = new MySqlCommand(sql,con);
             return(cmd.ExecuteNonQuery());
         }
+
+
     }
 }

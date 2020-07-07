@@ -40,4 +40,4 @@ L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\DoAn-CK.dll
 L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\DoAn-CK.pdb
 L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\DoAn-CK.genruntimeconfig.cache
 L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\Razor\Views\CaTruc\Index.cshtml.g.cs
-L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\Razor\Views\CaTruc\DeleteCaTruc.cshtml.g.cs
+L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\Razor\Views\CaTruc\FormEditCaTruc.cshtml.g.cs
