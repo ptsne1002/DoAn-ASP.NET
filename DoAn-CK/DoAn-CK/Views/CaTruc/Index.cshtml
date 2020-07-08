@@ -49,7 +49,7 @@
                     <td>@x.CaLam</td>
                     <td class="td-action">
                         <button class="btn btn-danger delete-row" title="Xoá" id="@i"><i class="glyphicon glyphicon-trash"></i></button>
-                        <button class="btn btn-info edit-row" title="Sửa" id="@i"><i class="far fa-edit"> </i></button>
+                        <a asp-action="FormEditCaTruc" asp-controller="CaTruc" asp-route-id="@x.MaNV"><button class="btn btn-info edit-row" title="Sửa" id="@i"><i class="far fa-edit"> </i></button></a>
                     </td>
                 </tr>
             }
@@ -177,16 +177,42 @@
     });
 
     $('.edit-row').on('click', function () {
-        if (confirm("Bạn Có Chắc Muốn Sửa Ca Trực Này ?"))
-           $.ajax({
+        var varid = this.id;
+        var myTab = document.getElementById('table-CaTruc');
+        var manv = myTab.rows.item(varid).cells.item(0).innerHTML;
+        var tennv = myTab.rows.item(varid).cells.item(1).innerHTML;
+        var tencv = myTab.rows.item(varid).cells.item(2).innerHTML;
+        var nhiemvu = myTab.rows.item(varid).cells.item(3).innerHTML;
+        var kv = myTab.rows.item(varid).cells.item(4).innerHTML;
+        var calam = myTab.rows.item(varid).cells.item(5).innerHTML;
+        console.log(manv, tennv, tencv, nhiemvu, kv, calam);
+           @*$.ajax({
             url: "/CaTruc/FormEditCaTruc",
-            type: 'POST',
+               type: 'POST',
+               data:
+               {
+                   MaNV: manv,
+                   TenNV: tennv,
+                   TenCV: tencv,
+                   NhiemVu: nhiemvu,
+                   KhuVuc: kv,
+                   CaLam: calam,
+               },
                success: function (result) {
                    window.open('@Url.Action("FormEditCaTruc","CaTruc")').focus();
             },
-            error: function (result) {
-            }
+               error: function (result) {
+
+                   console.log(result)
+            }*@
+        @*$.post('@Url.Action("FormEditCaTruc", "CaTruc")',
+                {
+                    MaNV: manv,
+            }, result => {
+                window.open('@Url.Action("FormEditCaTruc","CaTruc")').focus();
+
+                })*@
 });
-    });
+    @*});*@
 
 </script>

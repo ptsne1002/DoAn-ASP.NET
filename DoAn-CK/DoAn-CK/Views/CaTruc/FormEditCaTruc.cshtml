@@ -2,11 +2,46 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model IEnumerable<DoAn_CK.Models.CaTruc>
+@model CaTruc
 
-@{ 
+@{
     ViewData["title"] = "Edit Ca Trực";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1> edit ca trực nè !!!</h1>
+<link rel="stylesheet" type="text/css" href="~/css/formEdit.css">
+
+<div class="divformedit">
+    <form class="formedit" asp-action="EditCaTruc"> 
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="lable-text">Mã Nhân Viên</label>
+                <input value="@Model.MaNV" class="form-control" id="manv" name="MaNV" readonly>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="lable-text">Tên Nhân Viên</label>
+                <input class="form-control" id="tennv" readonly name="TenNV" value="@Model.TenNV">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="lable-text">Tên Công Việc</label>
+            <input type="text" class="form-control" style="font-size :18px;" id="tencv" value="@Model.TenCV" name="TenCV" placeholder="Tên Công Việc">
+        </div>
+        <div class="form-group">
+            <label class="lable-text">Nhiệm Vụ</label>
+            <input type="text" class="form-control" style="font-size :18px;" id="nhiemvu" value="@Model.NhiemVu" name="NhiemVu" placeholder="Nhiệm Vụ">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="lable-text">Khu Vực</label>
+                <input type="text" class="form-control" style="font-size :18px;" id="kv" value="@Model.KhuVuc" name="KhuVuc" placeholder="Khu Vực">
+            </div>
+            <div class="form-group col-md-6">
+                <label class="lable-text" for="inputZip">Ca Làm</label>
+                <input type="text" class="form-control" style="font-size :18px;" id="calam" value="@Model.CaLam" name="CaLam" placeholder="Ca Làm">
+            </div>
+        </div>
+        <button type="submit" style="font-size : 18px;" class="btn btn-primary btnsubmit" id="sub">Thay Đổi</button>
+        <span id="msg" style="color:red;" />
+    </form>
+</div>

@@ -54,6 +54,35 @@ namespace DoAn_CK.Models
             return(cmd.ExecuteNonQuery());
         }
 
+        public CaTruc GetDataCaTruc(string manv)
+        {
+            MySqlConnection con = GetConnection();
+            con.Open();
+            string sql = "SELECT nv.manv , nv.ten , ct.tencv,ct.nhiemvu , ct.khuvuc , ct.catruc FROM nhanvien nv, catruc ct where ct.manv = '" + manv + "' and ct.manv = nv.manv";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            var rd = cmd.ExecuteReader();
+            CaTruc a = new CaTruc();
+            while(rd.Read())
+            {
+                a.MaNV = rd["manv"].ToString();
+                a.TenNV = rd["ten"].ToString();
+                a.TenCV = rd["tencv"].ToString();
+                a.NhiemVu = rd["nhiemvu"].ToString();
+                a.KhuVuc = rd["khuvuc"].ToString();
+                a.CaLam = rd["catruc"].ToString();
+            }
+            return a;
+        }
+
+        public int ChangeDataCaTruc(CaTruc a)
+        {
+            MySqlConnection con = GetConnection();
+            con.Open();
+            string sql = "update catruc set tencv = '"+a.TenCV+"',nhiemvu = '"+a.NhiemVu+"',khuvuc = '"+a.KhuVuc+"',catruc = '"+a.CaLam+"' where manv = '"+a.MaNV+"'"; 
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            return (cmd.ExecuteNonQuery());
+
+        }
 
     }
 }

@@ -34,9 +34,21 @@ namespace DoAn_CK.Controllers
             return (cotext.DeleteCaTruc(ct));
         }
         
-        public IActionResult FormEditCaTruc()
+        public IActionResult FormEditCaTruc(string id)
         {
-            return View();
+            Console.WriteLine(id);
+            GetConnect();
+            CaTruc a = cotext.GetDataCaTruc(id);
+            
+            return View(a);
+        }
+
+        public IActionResult EditCaTruc(CaTruc ct)
+        {
+            GetConnect();
+            
+             cotext.ChangeDataCaTruc(ct);
+            return RedirectToAction("Index");
         }
     }
 }
