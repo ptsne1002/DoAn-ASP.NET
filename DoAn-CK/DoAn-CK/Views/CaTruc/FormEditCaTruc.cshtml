@@ -12,7 +12,8 @@
 <link rel="stylesheet" type="text/css" href="~/css/formEdit.css">
 
 <div class="divformedit">
-    <form class="formedit" asp-action="EditCaTruc"> 
+    <div class="formedit">
+        <h2 style="font-size:30px;font-family: 'Open Sans';">Thay Đổi Thông Tin Ca Trực</h2>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="lable-text">Mã Nhân Viên</label>
@@ -41,7 +42,43 @@
                 <input type="text" class="form-control" style="font-size :18px;" id="calam" value="@Model.CaLam" name="CaLam" placeholder="Ca Làm">
             </div>
         </div>
-        <button type="submit" style="font-size : 18px;" class="btn btn-primary btnsubmit" id="sub">Thay Đổi</button>
-        <span id="msg" style="color:red;" />
-    </form>
+        <button style="font-size : 18px;" class="btn btn-primary" id="sub">Thay Đổi</button>
+
+    </div>
 </div>
+
+<script type="text/javascript">
+
+    $('#sub').click(function () {
+        if (confirm("Bạn Có Chắc Thay Đổi Thông Tin Ca Trực Này ?")) {
+            let manv = $('#manv').val();
+            let tennv = $('#tennv').val();
+            let tencv = $('#tencv').val();
+            let nhiemvu = $('#nhiemvu').val();
+            let kv = $('#kv').val();
+            let calam = $('#calam').val();
+            $.post('@Url.Action("EditCaTruc","CaTruc")',
+                {
+                    MaNV: manv,
+                    TenNV: tennv,
+                    TenCV: tencv,
+                    NhiemVu: nhiemvu,
+                    KhuVuc: kv,
+                    CaLam: calam,
+                }, result => {
+                    if (Number(result) > 0) {
+                        alert("Thành Công!");
+                        window.open('@Url.Action("Index","CaTruc")', '_self');
+                    }
+                    else {
+                        alert("Thực Thi thất bại!");
+                        location.reload();
+                    }
+                    })
+
+            }
+    }
+    );
+
+
+</script>

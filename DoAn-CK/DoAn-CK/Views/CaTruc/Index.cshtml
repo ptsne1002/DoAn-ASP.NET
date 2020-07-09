@@ -27,6 +27,10 @@
 }
 <div class="container-table">
     <div class="wrap-table">
+        <div class="div-button">
+            <button class="btn btn-primary" id="btnThem" title="Thêm Ca Trực"><i class="glyphicon glyphicon-plus"></i> Add New CaTruc</button>
+            <button class="btn btn-success" id="btnExport" title="Xuất File Excel"><i class="glyphicon glyphicon-save"></i> Export To Excel</button>
+        </div>
         <table class="table table-bordered" id="table-CaTruc">
             <tr class="table_header">
                 <th>Mã Nhân Viên</th>
@@ -55,11 +59,6 @@
             }
         </table>
     </div>
-    <div>
-        <button class="btn btn-success" id="btnExport" title="Xuất File Excel"><i class="glyphicon glyphicon-save"></i> Export To Excel</button>
-    </div>
-
-
 </div>
 
 
@@ -176,43 +175,9 @@
         };
     });
 
-    $('.edit-row').on('click', function () {
-        var varid = this.id;
-        var myTab = document.getElementById('table-CaTruc');
-        var manv = myTab.rows.item(varid).cells.item(0).innerHTML;
-        var tennv = myTab.rows.item(varid).cells.item(1).innerHTML;
-        var tencv = myTab.rows.item(varid).cells.item(2).innerHTML;
-        var nhiemvu = myTab.rows.item(varid).cells.item(3).innerHTML;
-        var kv = myTab.rows.item(varid).cells.item(4).innerHTML;
-        var calam = myTab.rows.item(varid).cells.item(5).innerHTML;
-        console.log(manv, tennv, tencv, nhiemvu, kv, calam);
-           @*$.ajax({
-            url: "/CaTruc/FormEditCaTruc",
-               type: 'POST',
-               data:
-               {
-                   MaNV: manv,
-                   TenNV: tennv,
-                   TenCV: tencv,
-                   NhiemVu: nhiemvu,
-                   KhuVuc: kv,
-                   CaLam: calam,
-               },
-               success: function (result) {
-                   window.open('@Url.Action("FormEditCaTruc","CaTruc")').focus();
-            },
-               error: function (result) {
-
-                   console.log(result)
-            }*@
-        @*$.post('@Url.Action("FormEditCaTruc", "CaTruc")',
-                {
-                    MaNV: manv,
-            }, result => {
-                window.open('@Url.Action("FormEditCaTruc","CaTruc")').focus();
-
-                })*@
+    $('#btnThem').on('click', function () {
+         window.open('@Url.Action("FormAddCaTruc","CaTruc")', '_self');
 });
-    @*});*@
+
 
 </script>
