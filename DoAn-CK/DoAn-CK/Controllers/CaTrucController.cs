@@ -10,7 +10,7 @@ namespace DoAn_CK.Controllers
     public class CaTrucController : Controller
     {
         private CaTrucContext cotext;
-        
+       
         public void GetConnect()
         {
             if(cotext == null)
@@ -43,12 +43,24 @@ namespace DoAn_CK.Controllers
             return View(a);
         }
 
-        public IActionResult EditCaTruc(CaTruc ct)
+        public int EditCaTruc(CaTruc ct)
         {
             GetConnect();
-            
-             cotext.ChangeDataCaTruc(ct);
-            return RedirectToAction("Index");
+            return cotext.ChangeDataCaTruc(ct);
+        }
+
+        public IActionResult FormAddCaTruc()
+        {
+            GetConnect();
+            List<string> ls = new List<string>();
+            ls = cotext.GetListNhanVien();
+            return View(ls);
+        }
+
+        public int AddCaTruc(CaTruc ct)
+        {
+            GetConnect();
+            return cotext.AddCaTruc(ct);
         }
     }
 }

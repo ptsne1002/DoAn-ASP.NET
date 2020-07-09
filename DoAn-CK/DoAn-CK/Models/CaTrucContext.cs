@@ -81,7 +81,32 @@ namespace DoAn_CK.Models
             string sql = "update catruc set tencv = '"+a.TenCV+"',nhiemvu = '"+a.NhiemVu+"',khuvuc = '"+a.KhuVuc+"',catruc = '"+a.CaLam+"' where manv = '"+a.MaNV+"'"; 
             MySqlCommand cmd = new MySqlCommand(sql, con);
             return (cmd.ExecuteNonQuery());
+        }
 
+        public List<string> GetListNhanVien()
+        {
+            MySqlConnection con = GetConnection();
+            con.Open();
+            string sql = "SELECT nv.manv from nhanvien nv where nv.manv not in (SELECT manv FROM catruc)";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            var rd = cmd.ExecuteReader();
+           
+            List<string> ls = new List<string>();
+            while(rd.Read())
+            {
+                string temp = rd["manv"].ToString();
+                ls.Add(temp);
+            }
+            return ls;
+        }
+
+        public int AddCaTruc(CaTruc a)
+        {
+            MySqlConnection con = GetConnection();
+            con.Open();
+            string sql = "insert into catruc values('"+a.MaNV+"','" + a.TenCV + "','" + a.NhiemVu + "','" + a.KhuVuc + "','" + a.CaLam + "')";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            return (cmd.ExecuteNonQuery());
         }
 
     }
