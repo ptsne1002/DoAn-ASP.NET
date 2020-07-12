@@ -1,98 +1,114 @@
 ﻿
-@model IEnumerable<string>
+@model IEnumerable<CaTruc>
 
 @{
     ViewData["title"] = "Add Ca Trực";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
 <link rel="stylesheet" type="text/css" href="~/css/formEdit.css">
-
-<div class="divformedit">
-    <div class="formedit">
-        <h2 style="font-size:30px;font-family: 'Open Sans';">Thêm Ca Trực</h2>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="~/css/formEdit.css">
+<div>
+    <div class="formdiv1">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="lable-text">Mã Nhân Viên</label>
                 @*<input value="@Model.MaNV" class="form-control" id="manv" name="MaNV" readonly>*@
-                    <select id="MaNV" class="form-control" name="MaNV">
-                        @{ foreach (var x in Model)
-                            {
-                                <option value="@x">@x</option>
-                            }
-                        }
-                    </select>
-            </div>
-            <div class="form-group col-md-6">
-                <label class="lable-text">Tên Nhân Viên</label>
-                @*<input class="form-control" id="tennv" readonly name="TenNV" value="@Model.TenNV">*@
-                <select id="cbbMaNV" class="form-control" name="TenNV">
+                <select id="cbbMaNV" class="form-control" name="MaNV" style="height:auto" onchange="cbbMaNV();">
                     @{ foreach (var x in Model)
                         {
-                            <option value="@x">Đây là Tên Nv Nhưng chưa đọc được database</option>
+                            <option value="@x.MaNV" style="font-size:18px;">@x.MaNV</option>
                         }
                     }
                 </select>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="lable-text">Tên Công Việc</label>
-            <input type="text" class="form-control" style="font-size :18px;" id="tencv"  name="TenCV" placeholder="Tên Công Việc">
-        </div>
-        <div class="form-group">
-            <label class="lable-text">Nhiệm Vụ</label>
-            <input type="text" class="form-control" style="font-size :18px;" id="nhiemvu" name="NhiemVu" placeholder="Nhiệm Vụ">
-        </div>
-        <div class="form-row">
             <div class="form-group col-md-6">
-                <label class="lable-text">Khu Vực</label>
-                <input type="text" class="form-control" style="font-size :18px;" id="kv"  name="KhuVuc" placeholder="Khu Vực">
+                <label class="lable-text">Tên Nhân Viên</label>
+                <input class="form-control" id="tennv" readonly name="TenNV" value="Tên Nhân Viên" style="height:auto;font-size:18px">
+                <select id="cbbTen" class="form-control" name="MaNV" style="height:auto;" hidden>
+                    @{ foreach (var x in Model)
+                        {
+                            <option hidden value="@x.MaNV" style="font-size:18px;">@x.TenNV</option>
+                        }
+                    }
+                </select>
             </div>
-            <div class="form-group col-md-6">
-                <label class="lable-text" for="inputZip">Ca Làm</label>
-                <input type="text" class="form-control" style="font-size :18px;" id="calam"  name="CaLam" placeholder="Ca Làm">
             </div>
+            <div class="form-group">
+                <label class="lable-text">Tên Công Việc</label>
+                <input type="text" class="form-control" style="font-size :18px;height:auto;" id="tencv" name="TenCV" placeholder="Tên Công Việc">
+            </div>
+            <div class="form-group">
+                <label class="lable-text">Nhiệm Vụ</label>
+                <input type="text" class="form-control" style="font-size :18px;height:auto;" id="nhiemvu" name="NhiemVu" placeholder="Nhiệm Vụ">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="lable-text">Khu Vực</label>
+                    <select id="cbbkv" class="form-control" name="khuvuc" style="height:auto">
+                        <option value="Cổng A" style="font-size :18px;height:auto;">Cổng A</option>
+                        <option value="Cổng B" style="font-size :18px;height:auto;">Cổng B</option>
+                        <option value="Kho L1" style="font-size :18px;height:auto;">Kho L1</option>
+                        <option value="Kho L2" style="font-size :18px;height:auto;">Kho L2</option>
+                        <option value="Khu Chế Biến" style="font-size :18px;height:auto;">Khu Chế Biến</option>
+                        <option value="Kho Bảo Quản" style="font-size :18px;height:auto;">Kho Bảo Quản</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="lable-text" for="inputZip">Ca Làm</label>
+                    <select id="cbbCa" class="form-control" name="calam" style="height:auto">
+                        <option value="Ca 1" style="font-size :18px;height:auto;">Ca 1</option>
+                        <option value="Ca 2" style="font-size :18px;height:auto;">Ca 2</option>
+                        <option value="Ca 1 2" style="font-size :18px;height:auto;">Ca 1 - Ca 2</option>
+                        <option value="Ca 1 2 3" style="font-size :18px;height:auto;">Ca 1 - Ca 2 - Ca 3</option>
+                        <option value="Ca 2 3" style="font-size :18px;height:auto;">Ca 2 - Ca 3</option>
+                        <option value="Ca 3 4" style="font-size :18px;height:auto;">Ca 3 - Ca 4</option>
+                    </select>
+                </div>
+            </div>
+            <button style="font-size : 18px;width: 100%;margin: auto;margin-top: 5px;" class="btn btn-primary" id="sub">Thêm</button>
         </div>
-        <button style="font-size : 18px;" class="btn btn-primary" id="sub">Thêm</button>
-
-    </div>
 </div>
 
 <script type="text/javascript">
-
+    var ten = document.getElementById("cbbTen");
+    document.getElementById("tennv").value = ten.options[0].text;
     $('#sub').click(function () {
-            if (confirm("Bạn Có Chắc Thêm Ca Trực Này ?")) {
-                let manv = $('#MaNV option:selected').val();
-                
-                let tennv = $('#tennv').val();
-                let tencv = $('#tencv').val();
-                let nhiemvu = $('#nhiemvu').val();
-                let kv = $('#kv').val();
-                let calam = $('#calam').val();
-                console.log(manv);
-                console.log(tencv);
+        if (confirm("Bạn Có Chắc Thêm Ca Trực Này ?")) {
+            let manv = $('#cbbMaNV option:selected').val();
+            let tennv = $('#tennv').val();
+            let tencv = $('#tencv').val();
+            let nhiemvu = $('#nhiemvu').val();
+            let kv = $('#cbbkv option:selected').val();
+            let calam = $('#cbbCa option:selected').val();
+            console.log(tencv);
             $.post('@Url.Action("AddCaTruc","CaTruc")',
-             {
+                {
                     MaNV: manv,
                     TenNV: tennv,
                     TenCV: tencv,
                     NhiemVu: nhiemvu,
                     KhuVuc: kv,
                     CaLam: calam,
-             }, result => {
+                }, result => {
                     if (Number(result) > 0) {
                         alert("Thành Công!");
                         window.open('@Url.Action("Index","CaTruc")', '_self');
                     }
                     else {
                         alert("Thực Thi thất bại!");
-                        location.reload();
+                    location.reload();
                     }
                 })
 
-            }
-                        }
-    );
+        }
+    });
 
-
+    function cbbMaNV() {
+        var ma = document.getElementById("cbbMaNV");
+        var ten = document.getElementById("cbbTen");
+        var display = ten.options[ma.selectedIndex].text;
+        document.getElementById("tennv").value = display;
+    }
 </script>

@@ -6,43 +6,55 @@
 
 @{
     ViewData["title"] = "Edit Ca Trực";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
-
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="~/css/formEdit.css">
-
-<div class="divformedit">
-    <div class="formedit">
-        <h2 style="font-size:30px;font-family: 'Open Sans';">Thay Đổi Thông Tin Ca Trực</h2>
+<div >
+    <div class="formdiv1">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="lable-text">Mã Nhân Viên</label>
-                <input value="@Model.MaNV" class="form-control" id="manv" name="MaNV" readonly>
+                <input value="@Model.MaNV" class="form-control" style="font-size :18px;height:auto;" id="manv" name="MaNV" readonly>
             </div>
             <div class="form-group col-md-6">
                 <label class="lable-text">Tên Nhân Viên</label>
-                <input class="form-control" id="tennv" readonly name="TenNV" value="@Model.TenNV">
+                <input class="form-control" id="tennv" style="font-size :18px;height:auto;" readonly name="TenNV" value="@Model.TenNV">
             </div>
         </div>
         <div class="form-group">
             <label class="lable-text">Tên Công Việc</label>
-            <input type="text" class="form-control" style="font-size :18px;" id="tencv" value="@Model.TenCV" name="TenCV" placeholder="Tên Công Việc">
+            <input type="text" class="form-control" style="font-size :18px;height:auto;" id="tencv" value="@Model.TenCV" name="TenCV" placeholder="Tên Công Việc">
         </div>
         <div class="form-group">
             <label class="lable-text">Nhiệm Vụ</label>
-            <input type="text" class="form-control" style="font-size :18px;" id="nhiemvu" value="@Model.NhiemVu" name="NhiemVu" placeholder="Nhiệm Vụ">
+            <input type="text" class="form-control" style="font-size :18px;height:auto;" id="nhiemvu" value="@Model.NhiemVu" name="NhiemVu" placeholder="Nhiệm Vụ">
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="lable-text">Khu Vực</label>
-                <input type="text" class="form-control" style="font-size :18px;" id="kv" value="@Model.KhuVuc" name="KhuVuc" placeholder="Khu Vực">
+                <select id="cbbkv" class="form-control" name="khuvuc" style="height:auto">
+                    <option value="Cổng A" style="font-size :18px;height:auto;">Cổng A</option>
+                    <option value="Cổng B" style="font-size :18px;height:auto;">Cổng B</option>
+                    <option value="Kho L1" style="font-size :18px;height:auto;">Kho L1</option>
+                    <option value="Kho L2" style="font-size :18px;height:auto;">Kho L2</option>
+                    <option value="Khu Chế Biến" style="font-size :18px;height:auto;">Khu Chế Biến</option>
+                    <option value="Kho Bảo Quản" style="font-size :18px;height:auto;">Kho Bảo Quản</option>
+                </select>
             </div>
             <div class="form-group col-md-6">
                 <label class="lable-text" for="inputZip">Ca Làm</label>
-                <input type="text" class="form-control" style="font-size :18px;" id="calam" value="@Model.CaLam" name="CaLam" placeholder="Ca Làm">
+                <select id="cbbCa" class="form-control" name="calam" style="height:auto">
+                    <option value="Ca 1" style="font-size :18px;height:auto;">Ca 1</option>
+                    <option value="Ca 2" style="font-size :18px;height:auto;">Ca 2</option>
+                    <option value="Ca 1 2" style="font-size :18px;height:auto;">Ca 1 - Ca 2</option>
+                    <option value="Ca 1 2 3" style="font-size :18px;height:auto;">Ca 1 - Ca 2 - Ca 3</option>
+                    <option value="Ca 2 3" style="font-size :18px;height:auto;">Ca 2 - Ca 3</option>
+                    <option value="Ca 3 4" style="font-size :18px;height:auto;">Ca 3 - Ca 4</option>
+                </select>
             </div>
         </div>
-        <button style="font-size : 18px;" class="btn btn-primary" id="sub">Thay Đổi</button>
+        <button style="font-size : 18px;width: 100%;margin: auto;margin-top: 5px;" class="btn btn-primary" id="sub">Thay Đổi</button>
 
     </div>
 </div>
@@ -55,8 +67,8 @@
             let tennv = $('#tennv').val();
             let tencv = $('#tencv').val();
             let nhiemvu = $('#nhiemvu').val();
-            let kv = $('#kv').val();
-            let calam = $('#calam').val();
+            let kv = $('#cbbkv option:selected').val();
+            let calam = $('#cbbCa option:selected').val();
             $.post('@Url.Action("EditCaTruc","CaTruc")',
                 {
                     MaNV: manv,

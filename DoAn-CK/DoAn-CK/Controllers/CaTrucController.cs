@@ -52,7 +52,7 @@ namespace DoAn_CK.Controllers
         public IActionResult FormAddCaTruc()
         {
             GetConnect();
-            List<string> ls = new List<string>();
+            List<CaTruc> ls = new List<CaTruc>();
             ls = cotext.GetListNhanVien();
             return View(ls);
         }

@@ -83,18 +83,20 @@ namespace DoAn_CK.Models
             return (cmd.ExecuteNonQuery());
         }
 
-        public List<string> GetListNhanVien()
+        public List<CaTruc> GetListNhanVien()
         {
             MySqlConnection con = GetConnection();
             con.Open();
-            string sql = "SELECT nv.manv from nhanvien nv where nv.manv not in (SELECT manv FROM catruc)";
+            string sql = "SELECT nv.manv, nv.ten from nhanvien nv where nv.manv not in (SELECT manv FROM catruc)";
             MySqlCommand cmd = new MySqlCommand(sql, con);
             var rd = cmd.ExecuteReader();
            
-            List<string> ls = new List<string>();
+            List<CaTruc> ls = new List<CaTruc>();
             while(rd.Read())
             {
-                string temp = rd["manv"].ToString();
+                CaTruc temp = new CaTruc();
+                 temp.MaNV   = rd["manv"].ToString();
+                temp.TenNV = rd["ten"].ToString();
                 ls.Add(temp);
             }
             return ls;
