@@ -30,7 +30,6 @@
 <div class="container-table">
     <div class="wrap-table">
         <div class="div-button">
-            
             <a onclick="showInPopup('@Url.Action("FormAddCaTruc","CaTruc",null, Context.Request.Scheme)','Thêm Ca Trực')" class="btn btn-primary" title="Thêm Ca Trực"><i class="glyphicon glyphicon-plus" style="font-size :18px"> </i> Thêm Ca Trực</a>
             <button class="btn btn-success" id="btnExport" title="Xuất File Excel"><i class="glyphicon glyphicon-save"></i> Export To Excel</button>
         </div>
@@ -179,6 +178,9 @@
         };
     });
 
+    $('#btnThem').on('click', function () {
+         window.open('@Url.Action("FormAddCaTruc","CaTruc")', '_self');
+});
 
 </script>
 

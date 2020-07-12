@@ -83,6 +83,7 @@ namespace DoAn_CK.Models
             return (cmd.ExecuteNonQuery());
         }
 
+
         public List<CaTruc> GetListNhanVien()
         {
             MySqlConnection con = GetConnection();
