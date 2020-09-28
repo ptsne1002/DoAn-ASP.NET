@@ -42,3 +42,4 @@ L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\DoAn-CK.genruntimeconfig.cache
 L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\Razor\Views\CaTruc\Index.cshtml.g.cs
 L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\Razor\Views\CaTruc\FormEditCaTruc.cshtml.g.cs
 L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\Razor\Views\CaTruc\FormAddCaTruc.cshtml.g.cs
+L:\C#\DoAn-CK\DoAn-CK\obj\Debug\netcoreapp3.1\Razor\Views\CaTruc\GetAPI.cshtml.g.cs

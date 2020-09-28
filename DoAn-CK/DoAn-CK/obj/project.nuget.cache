@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GGEvqL0dfw54fOW/PjYv9h2km6w0yvyvkVM/6olEokYADJa4wBLk5EjtVmPn6VAW/WjCc6Orhbl8h8JgfjGh8w==",
+  "dgSpecHash": "vgRpaTYURZPa7A/2EL4sioX4p/ZzqQ8hJuXxJA9OLmRFZu21x8YhjOG0I/BLNBzP+kpD/2r0JKNNq3jKwtcjIg==",
   "success": true,
   "projectFilePath": "L:\\C#\\DoAn-CK\\DoAn-CK\\DoAn-CK.csproj",
   "expectedPackageFiles": [
@@ -11,8 +11,7 @@
     "C:\\Users\\phams\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.4.0\\system.security.cryptography.protecteddata.4.4.0.nupkg.sha512",
     "C:\\Users\\phams\\.nuget\\packages\\system.security.permissions\\4.4.1\\system.security.permissions.4.4.1.nupkg.sha512",
     "C:\\Users\\phams\\.nuget\\packages\\system.security.principal.windows\\4.4.0\\system.security.principal.windows.4.4.0.nupkg.sha512",
-    "C:\\Users\\phams\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512",
-    "C:\\Users\\phams\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\phams\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512"
   ],
   "logs": []
 }

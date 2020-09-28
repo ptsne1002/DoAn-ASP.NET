@@ -1,0 +1,10 @@
+L:\C#\BTTH3\BTTH3\bin\Debug\BTTH3.exe.config
+L:\C#\BTTH3\BTTH3\bin\Debug\BTTH3.exe
+L:\C#\BTTH3\BTTH3\bin\Debug\BTTH3.pdb
+L:\C#\BTTH3\BTTH3\obj\Debug\BTTH3.csprojAssemblyReference.cache
+L:\C#\BTTH3\BTTH3\obj\Debug\BTTH3.Form1.resources
+L:\C#\BTTH3\BTTH3\obj\Debug\BTTH3.Properties.Resources.resources
+L:\C#\BTTH3\BTTH3\obj\Debug\BTTH3.csproj.GenerateResource.cache
+L:\C#\BTTH3\BTTH3\obj\Debug\BTTH3.csproj.CoreCompileInputs.cache
+L:\C#\BTTH3\BTTH3\obj\Debug\BTTH3.exe
+L:\C#\BTTH3\BTTH3\obj\Debug\BTTH3.pdb

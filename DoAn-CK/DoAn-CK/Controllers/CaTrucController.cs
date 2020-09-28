@@ -62,5 +62,11 @@ namespace DoAn_CK.Controllers
             GetConnect();
             return cotext.AddCaTruc(ct);
         }
+
+        public IActionResult GetAPI()
+        {
+            return View();
+        }
+       
     }
 }
